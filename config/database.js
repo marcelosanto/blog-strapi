@@ -1,3 +1,6 @@
+const parse = require('pg-connection-string').parse
+const config = parse(process.env.DATABASE_URL)
+
 module.exports = ({ env }) => ({
   defaultConnection: 'default',
   connections: {
@@ -12,7 +15,7 @@ module.exports = ({ env }) => ({
         password: env('DATABASE_PASSWORD', 'senha'),
         ssl: env.bool('DATABASE_SSL', false),
       },
-      options: {}
+      options: {},
     },
   },
-});
+})
