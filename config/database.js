@@ -13,9 +13,13 @@ module.exports = ({ env }) => ({
         database: env('DATABASE_NAME', 'blog-strapi'),
         username: env('DATABASE_USERNAME', 'postgres'),
         password: env('DATABASE_PASSWORD', 'senha'),
-        ssl: env.bool('DATABASE_SSL', false),
+        ssl: {
+          rejectUnauthorized: false,
+        },
       },
-      options: {},
+      options: {
+        ssl: true,
+      },
     },
   },
 })
